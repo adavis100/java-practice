@@ -1,18 +1,20 @@
 package com.javapractice.hackerrank;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AngryProfessorTest {
+import org.junit.jupiter.api.Test;
+
+class AngryProfessorTest {
     @Test
-    public void cancelsWhenNumStudentsLessThanRequired() throws Exception {
+    void cancelsWhenNumStudentsLessThanRequired()  {
         int[] arrivalTimes = {1, -1};
-        Assert.assertTrue(AngryProfessor.shouldCancel(arrivalTimes, 2));
+        assertTrue(AngryProfessor.shouldCancel(arrivalTimes, 2));
     }
 
     @Test
-    public void doesNotCancelWhenNumStudentsEqualToRequired() throws Exception {
+    void doesNotCancelWhenNumStudentsEqualToRequired()  {
         int[] arrivalTimes = {10, 0, -1};
-        Assert.assertFalse(AngryProfessor.shouldCancel(arrivalTimes, 2));
+        assertFalse(AngryProfessor.shouldCancel(arrivalTimes, 2));
     }
 }

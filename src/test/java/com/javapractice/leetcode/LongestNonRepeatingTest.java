@@ -1,9 +1,14 @@
 package com.javapractice.leetcode;
 
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-import static org.testng.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 /**
  * Given a string, find the length of the longest substring without repeating characters.
@@ -16,21 +21,21 @@ import static org.testng.Assert.assertEquals;
 
  Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
-public class LongestNonRepeatingTest {
-    @DataProvider
-    public static Object[][] provideArgs() {
-        return new Object[][]{
-                new Object[]{"abcabcbb", 3},
-                new Object[]{"bbbbb", 1},
-                new Object[]{"pwwkew", 3},
-                new Object[]{"dvdf", 3},
-                new Object[]{"tmmzuxt", 5}
-        };
+class LongestNonRepeatingTest {
+    static Stream<Arguments> provideArgs() {
+        return Stream.of(
+                arguments("abcabcbb", 3),
+                arguments("bbbbb", 1),
+                arguments("pwwkew", 3),
+                arguments("dvdf", 3),
+                arguments("tmmzuxt", 5)
+        );
     }
 
-    @Test (dataProvider = "provideArgs")
-    public void returnsLengthOfLongestNonRepeatingSubstring(String s, int expected) throws Exception {
+    @ParameterizedTest
+    @MethodSource("provideArgs")
+    void returnsLengthOfLongestNonRepeatingSubstring(String s, int expected)  {
         LongestNonRepeating longestNonRepeating = new LongestNonRepeating();
-        assertEquals(longestNonRepeating.lengthOfLongestSubstring(s), expected);
+        assertEquals(expected, longestNonRepeating.lengthOfLongestSubstring(s));
     }
 }

@@ -1,32 +1,33 @@
 package com.javapractice.codewars;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AbbreviatorTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class AbbreviatorTest {
 
     private Abbreviator abbreviator;
 
-    @BeforeMethod
-    public void setUp() throws Exception {
+    @BeforeEach
+    void setUp()  {
         abbreviator = new Abbreviator();
 
     }
 
     @Test
-    public void handlesLongWord() throws Exception {
-        assertEquals(abbreviator.abbreviate("internationalization"), "i18n");
+    void handlesLongWord()  {
+        assertEquals("i18n", abbreviator.abbreviate("internationalization"));
     }
 
     @Test
-    public void handlesShortWord() throws Exception {
-        assertEquals(abbreviator.abbreviate("foo"), "foo");
+    void handlesShortWord()  {
+        assertEquals("foo", abbreviator.abbreviate("foo"));
     }
 
     @Test
-    public void handlesSentence() throws Exception {
-        assertEquals(abbreviator.abbreviate("You need, need not want, to complete this code-wars mission"), "You n2d, n2d not w2t, to c6e t2s c2e-w2s m5n");
+    void handlesSentence()  {
+        assertEquals("You n2d, n2d not w2t, to c6e t2s c2e-w2s m5n", abbreviator.abbreviate("You need, need not want, to complete this code-wars mission"));
     }
 }

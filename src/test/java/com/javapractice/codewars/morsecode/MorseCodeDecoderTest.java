@@ -1,22 +1,26 @@
 package com.javapractice.codewars.morsecode;
 
-import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MorseCodeDecoderTest {
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+class MorseCodeDecoderTest {
     @Test
-    public void decodesExampleString() {
-        assertEquals(MorseCodeDecoder.decode(".... . -.--   .--- ..- -.. ."), "HEY JUDE");
+    void decodesExampleString() {
+        assertEquals("HEY JUDE", MorseCodeDecoder.decode(".... . -.--   .--- ..- -.. ."));
     }
 
-    @Test(enabled = false) // TODO: fix
-    public void handlesLeadingAndTrailingWhitespace() throws Exception {
-        assertEquals(MorseCodeDecoder.decode("     .... . -.--   .--- ..- -.. .    "), "HEY JUDE");
+    @Test
+    @Disabled // TODO: fix
+    void handlesLeadingAndTrailingWhitespace()  {
+        assertEquals("HEY JUDE", MorseCodeDecoder.decode("     .... . -.--   .--- ..- -.. .    "));
     }
 
-    @Test(enabled = false) // TODO: fix
-    public void handlesSplitWithSpaces() throws Exception {
-        assertEquals(MorseCodeDecoder.decode("   ...."), "H");
+    @Test
+    @Disabled // TODO: Fix
+    void handlesSplitWithSpaces()  {
+        assertEquals("H", MorseCodeDecoder.decode("   ...."));
     }
 }

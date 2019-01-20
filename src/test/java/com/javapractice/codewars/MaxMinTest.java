@@ -1,16 +1,16 @@
 package com.javapractice.codewars;
 
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.testng.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
-public class MaxMinTest {
+class MaxMinTest {
     @Test
-    public void testExamples() throws Exception {
+    void testExamples()  {
         MaxMin maxMin = new MaxMin();
-        assertEquals(maxMin.min(new int[]{-52, 56, 30, 29, -54, 0, -110}), -110);
-        assertEquals(maxMin.min(new int[]{42, 54, 65, 87, 0}), 0);
-        assertEquals(maxMin.max(new int[]{4,6,2,1,9,63,-134,566}), 566);
-        assertEquals(maxMin.max(new int[]{5}), 5);
+        assertEquals(-110, maxMin.min(new int[]{-52, 56, 30, 29, -54, 0, -110}));
+        assertEquals(0, maxMin.min(new int[]{42, 54, 65, 87, 0}));
+        assertEquals(566, maxMin.max(new int[]{4,6,2,1,9,63,-134,566}));
+        assertEquals(5, maxMin.max(new int[]{5}));
     }
 }

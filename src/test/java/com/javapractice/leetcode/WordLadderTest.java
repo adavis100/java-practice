@@ -1,24 +1,27 @@
 package com.javapractice.leetcode;
 
-import org.testng.annotations.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.testng.Assert.assertEquals;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-public class WordLadderTest {
+class WordLadderTest {
     @Test
-    public void findsLadderLength() throws Exception {
+    void findsLadderLength()  {
         WordLadder ladder = new WordLadder();
         Set<String> wordList = Stream.of("hot", "dot", "dog", "lot", "log").collect(Collectors.toSet());
-        assertEquals(ladder.ladderLength("hit", "cog", wordList), 5);
+        assertEquals(5, ladder.ladderLength("hit", "cog", wordList));
     }
 
-    @Test(enabled = false) // TODO: fix
-    public void handlesWordWithOneStep() throws Exception {
+    @Test
+    @Disabled // TODO: fix
+    void handlesWordWithOneStep()  {
         WordLadder ladder = new WordLadder();
-        assertEquals(ladder.ladderLength("hit", "him", null), 1);
+        assertEquals(1, ladder.ladderLength("hit", "him", null));
     }
 }

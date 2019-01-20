@@ -1,19 +1,20 @@
 package com.javapractice.leetcode;
 
-import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TrieTest {
+import org.junit.jupiter.api.Test;
+
+class TrieTest {
     @Test
-    public void findsWordInTrie() throws Exception {
+    void findsWordInTrie()  {
         Trie trie = new Trie();
         trie.insert("foo");
         assertTrue(trie.search("foo"));
     }
 
     @Test
-    public void findsPrefixInTrie() throws Exception {
+    void findsPrefixInTrie()  {
         Trie trie = new Trie();
         trie.insert("foobar");
         assertTrue(trie.startsWith("foo"));

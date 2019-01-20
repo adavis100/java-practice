@@ -1,16 +1,17 @@
 package com.javapractice.hackerrank;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class CutSticksTest {
+class CutSticksTest {
     @Test
-    public void performsSingleCut() throws Exception {
+    void performsSingleCut()  {
         List<Integer> startSticks = Arrays.asList(5, 2, 2, 6, 7);
         List<Integer> sticks = CutSticks.doCut(startSticks);
-        Assert.assertEquals(sticks.size(), 3);
+        assertEquals(3, sticks.size());
     }
 }

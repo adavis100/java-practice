@@ -1,12 +1,13 @@
 package com.javapractice.codewars;
 
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Test;
 
-public class InAscendingOrderTest {
+class InAscendingOrderTest {
     @Test
-    public void reportsWhetherArrayIsInAscendingOrder() throws Exception {
+    void reportsWhetherArrayIsInAscendingOrder()  {
         assertTrue(InAscendingOrder.isAscOrder(new int[] {1}));
         assertTrue(InAscendingOrder.isAscOrder(new int[] {1,2,4,7,19}));
         assertTrue(InAscendingOrder.isAscOrder(new int[] {1,2,3,4,5}));

@@ -1,8 +1,5 @@
 package com.javapractice.scratch;
 
-import com.sun.org.apache.xerces.internal.impl.dv.xs.IntegerDV;
-
-import javax.print.attribute.IntegerSyntax;
 import java.io.*;
 import java.util.*;
 

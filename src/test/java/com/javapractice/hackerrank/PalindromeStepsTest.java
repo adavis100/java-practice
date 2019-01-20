@@ -1,23 +1,27 @@
 package com.javapractice.hackerrank;
 
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class PalindromeStepsTest {
-    @DataProvider
-    public static Object[][] provideArgs() {
-        return new Object[][] {
-                {"abba", 0},
-                {"ab", 1},
-                {"abbotto", 3},
-                {"foobar", 5}
-        };
+import java.util.stream.Stream;
+
+class PalindromeStepsTest {
+    static Stream<Arguments> provideArgs() {
+        return Stream.of(
+                arguments("abba", 0),
+                arguments("ab", 1),
+                arguments("abbotto", 3),
+                arguments("foobar", 5)
+        );
     }
 
-    @Test(dataProvider = "provideArgs")
-    public void findsMinimumSteps(String str, int expected) throws Exception {
-        assertEquals(PalindromeSteps.minimumStepsToPalindrome(str), expected);
+    @ParameterizedTest
+    @MethodSource("provideArgs")
+    void findsMinimumSteps(String str, int expected)  {
+        assertEquals(expected, PalindromeSteps.minimumStepsToPalindrome(str));
     }
 }

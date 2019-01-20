@@ -1,34 +1,39 @@
 package com.javapractice.hackerrank;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class CalculatorTest {
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+class CalculatorTest {
     private Calculator calculator;
 
-    @BeforeMethod
-    public void setUp() throws Exception {
+    @BeforeEach
+    void setUp()  {
         calculator = new Calculator();
     }
 
-    @DataProvider
-    public Object[][] provideArguments() {
-        return new Object[][] {
-            {"1+1", 2},
-            {"1  +   1", 2},
-            {"2 - 1", 1},
-            {"2-1 + 2", 3},
-            {"(1+(4+5+2)-3)+(6+8)", 23},
-            {"2 - (5-6)", 3}
-        };
+    Stream<Arguments> provideArguments() {
+        return Stream.of(
+            arguments("1+1", 2),
+            arguments("1  +   1", 2),
+            arguments("2 - 1", 1),
+            arguments("2-1 + 2", 3),
+            arguments("(1+(4+5+2)-3)+(6+8)", 23),
+            arguments("2 - (5-6)", 3)
+        );
     }
 
-    // TODO: broken
-    @Test (dataProvider = "provideArguments", enabled = false)
-    public void calculatesExpectedValue(String expr, int result) throws Exception {
-        assertEquals(calculator.calculate(expr), result);
+    @ParameterizedTest
+    @MethodSource("provideArguments")
+    @Disabled // TODO: Broken
+    void calculatesExpectedValue(String expr, int result)  {
+        assertEquals(result, calculator.calculate(expr));
     }
 }

@@ -1,19 +1,18 @@
 package com.javapractice.leetcode;
 
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
-public class PathSumTest {
+import org.junit.jupiter.api.Test;
+
+class PathSumTest {
     @Test
-    public void solvesExample() throws Exception {
+    void solvesExample()  {
         PathSum pathSum = new PathSum();
 /*
               5
@@ -41,7 +40,7 @@ public class PathSumTest {
             [5,8,4,5]
         ]
         */
-        assertEquals(list.size(), 2);
+        assertEquals(2, list.size());
         List<Integer> list1 = list.get(0);
         assertTrue(list1.containsAll(Stream.of(5, 4, 11, 2).collect(Collectors.toList())) ||
                 list1.containsAll(Stream.of(5, 8, 4, 5).collect(Collectors.toList())));
@@ -51,7 +50,7 @@ public class PathSumTest {
     }
 
     @Test
-    public void handlesAnotherCase() throws Exception {
+    void handlesAnotherCase()  {
         PathSum pathSum = new PathSum();
         /*
         [1,-2,-3,1,3,-2,null,-1]
@@ -70,8 +69,8 @@ public class PathSumTest {
             [1,-2,3]
         ]
         */
-        assertEquals(list.size(), 1);
+        assertEquals(1, list.size());
         List<Integer> list1 = list.get(0);
-        assertEquals(list1, Stream.of(1, -2, 3).collect(Collectors.toList()));
+        assertEquals(Stream.of(1, -2, 3).collect(Collectors.toList()), list1);
     }
 }

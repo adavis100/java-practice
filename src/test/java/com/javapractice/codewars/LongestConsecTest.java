@@ -1,12 +1,12 @@
 package com.javapractice.codewars;
 
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.testng.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
-public class LongestConsecTest {
+class LongestConsecTest {
     @Test
-    public void test() {
+    void test() {
         System.out.println("longestConsec Fixed Tests");
         assertEquals(LongestConsec.longestConsec(new String[] {"zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"}, 2), "abigailtheta");
         assertEquals(LongestConsec.longestConsec(new String[] {"ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"}, 1), "oocccffuucccjjjkkkjyyyeehh");
