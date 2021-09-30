@@ -3,10 +3,12 @@ package com.javapractice.leetcode;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,7 +22,7 @@ class WordLadder2Test {
         args.add(arguments(
                 "hit",
                 "cog",
-                Stream.of("hot", "dot", "dog", "lot", "log").collect(Collectors.toSet()),
+                Stream.of("hot", "dot", "dog", "lot", "log", "cog").collect(Collectors.toSet()),
                 Stream.of(Stream.of("hit", "hot", "dot", "dog", "cog").collect(Collectors.toList()),
                           Stream.of("hit", "hot", "lot", "log", "cog").collect(Collectors.toList())).collect(Collectors.toList())));
         args.add(arguments(
@@ -47,4 +49,13 @@ class WordLadder2Test {
         }
     }
 
+    @ParameterizedTest
+    @MethodSource("provideArgs")
+    void findsLadderSecondTry(String start, String end, Set<String> wordList, List<List<String>> expectedLadders) {
+        WordLadder2B ladder = new WordLadder2B();
+        List<List<String>> ladders = ladder.findLadders(start, end, new ArrayList<>(wordList));
+        for (List<String> list : expectedLadders) {
+            assertThat(ladders).contains(list);
+        }
+    }
 }

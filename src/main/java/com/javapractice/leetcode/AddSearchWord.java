@@ -21,27 +21,25 @@ package com.javapractice.leetcode;
  * You may assume that all words are consist of lowercase letters a-z
  */
 public class AddSearchWord {
-    private Node root;
+    private final Node root;
 
     public AddSearchWord() {
         root = new Node();
     }
 
     public void addWord(String word) {
-
+        Node cur = root;
+        for (char c : word.toCharArray()) {
+            if (cur.edges[c - 'a'] == null) {
+                cur.edges[c - 'a'] = new Node();
+            }
+            cur = cur.edges[c - 'a'];
+        }
+        cur.isWord = true;
     }
 
     public boolean search(String word) {
         return doSearch(word, root);
-//        Node node = root;
-//        for (char c : word.toCharArray()) {
-//            if (c == '.') {
-//
-//            } else {
-//
-//            }
-//        }
-//        return false;
     }
 
     private boolean doSearch(String word, Node node) {

@@ -1,5 +1,7 @@
 package com.javapractice.misc;
 
+import java.util.Objects;
+
 public class InnerClass {
     public int getA() {
         return a;

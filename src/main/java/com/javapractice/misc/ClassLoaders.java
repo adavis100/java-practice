@@ -10,7 +10,7 @@ public class ClassLoaders {
         try {
             url = new URL("file:///Users/awa/projects/scratch/vaadin-test/target/rzfemgmt-classes.jar");
             URLClassLoader classLoader = new URLClassLoader(new URL[] {url});
-            Class clazz = classLoader.loadClass("com.example.Greeter");
+            Class clazz = classLoader.loadClass("com.javapractice.misc.ClassLoaders");
             Object o = clazz.newInstance();
             System.out.println(o.toString());
         } catch (MalformedURLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
